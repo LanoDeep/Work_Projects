@@ -1,0 +1,226 @@
+# Load the dataset
+df = pd.read_csv('Raw_Dataset_with_Issues.csv')
+
+# 1. Handling Missing Data
+# Identify columns with missing values
+missing_columns = df.columns[df.isnull().any()].tolist()
+print(f"Columns with missing values: {missing_columns}")
+
+# Technique 1: Fill missing values with mean (for numerical columns)
+df_mean_filled = df.copy()
+df_mean_filled['Age'].fillna(df_mean_filled['Age'].mean(), inplace=True)
+df_mean_filled['Salary'].fillna(df_mean_filled['Salary'].mean(), inplace=True)
+
+# Technique 2: Fill missing values with mode (for categorical columns)
+df_mode_filled = df.copy()
+df_mode_filled['City'].fillna(df_mode_filled['City'].mode()[0], inplace=True)
+df_mode_filled['Gender'].fillna(df_mode_filled['Gender'].mode()[0], inplace=True)
+df_mode_filled['Marital_Status'].fillna(df_mode_filled['Marital_Status'].mode()[0], inplace=True)
+df_mode_filled['Education'].fillna(df_mode_filled['Education'].mode()[0], inplace=True)
+
+# Technique 3: Fill missing values with median (for numerical columns)
+df_median_filled = df.copy()
+df_median_filled['Age'].fillna(df_median_filled['Age'].median(), inplace=True)
+df_median_filled['Salary'].fillna(df_median_filled['Salary'].median(), inplace=True)
+
+# Technique 4: Fill missing values with a specific value (for categorical columns)
+df_specific_value_filled = df.copy()
+df_specific_value_filled['City'].fillna('Unknown', inplace=True)
+df_specific_value_filled['Gender'].fillna('Unknown', inplace=True)
+df_specific_value_filled['Marital_Status'].fillna('Unknown', inplace=True)
+df_specific_value_filled['Education'].fillna('Unknown', inplace=True)
+
+# Compare the effects of each technique
+print("\nOriginal DataFrame:")
+print(df.head())
+
+print("\nDataFrame with Mean Filled:")
+print(df_mean_filled.head())
+
+print("\nDataFrame with Mode Filled:")
+print(df_mode_filled.head())
+
+print("\nDataFrame with Median Filled:")
+print(df_median_filled.head())
+
+print("\nDataFrame with Specific Value Filled:")
+print(df_specific_value_filled.head())
+
+# 2. Duplicate Detection and Handling
+# Identify duplicate rows
+duplicates = df[df.duplicated()]
+print(f"\nDuplicate Rows:\n{duplicates}")
+
+# Remove duplicate rows
+df_no_duplicates = df.drop_duplicates()
+
+# 3. Categorical Data Standardization
+# Standardize 'City' and 'Gender' columns
+def standardize_categorical(df, column, mapping):
+    df[column] = df[column].map(mapping)
+    return df
+
+city_mapping = {
+    'New York': 'New York',
+    'New-York': 'New York',
+    'Los Angeles': 'Los Angeles',
+    'LA': 'Los Angeles',
+    'Houston': 'Houston',
+    'Chicago': 'Chicago',
+    'Phoenix': 'Phoenix'
+}
+
+gender_mapping = {
+    'Male': 'Male',
+    'Female': 'Female',
+    'M': 'Male',
+    'F': 'Female',
+    'Other': 'Other',
+    'nan': np.nan
+}
+
+df_standardized = df.copy()
+df_standardized = standardize_categorical(df_standardized, 'City', city_mapping)
+df_standardized = standardize_categorical(df_standardized, 'Gender', gender_mapping)
+
+print("\nStandardized DataFrame:")
+print(df_standardized.head())
+
+# 4. Outlier Detection and Handling
+# Using IQR Method
+def detect_outliers_iqr(df, column):
+    Q1 = df[column].quantile(0.25)
+    Q3 = df[column].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    return df[(df[column] < lower_bound) | (df[column] > upper_bound)]
+
+# Using Z-score Method
+def detect_outliers_zscore(df, column):
+    z_scores = stats.zscore(df[column].dropna())
+    abs_z_scores = np.abs(z_scores)
+    return df[abs_z_scores > 3]
+
+outliers_iqr_salary = detect_outliers_iqr(df, 'Salary')
+outliers_zscore_salary = detect_outliers_zscore(df, 'Salary')
+
+outliers_iqr_purchase = detect_outliers_iqr(df, 'Purchase_Amount')
+outliers_zscore_purchase = detect_outliers_zscore(df, 'Purchase_Amount')
+
+print("\nOutliers in Salary using IQR Method:")
+print(outliers_iqr_salary)
+
+print("\nOutliers in Salary using Z-score Method:")
+print(outliers_zscore_salary)
+
+print("\nOutliers in Purchase Amount using IQR Method:")
+print(outliers_iqr_purchase)
+
+print("\nOutliers in Purchase Amount using Z-score Method:")
+print(outliers_zscore_purchase)
+
+# Handling outliers by capping
+def cap_outliers(df, column):
+    Q1 = df[column].quantile(0.25)
+    Q3 = df[column].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    df[column] = np.where(df[column] < lower_bound, lower_bound, df[column])
+    df[column] = np.where(df[column] > upper_bound, upper_bound, df[column])
+    return df
+
+df_capped = df.copy()
+df_capped = cap_outliers(df_capped, 'Salary')
+df_capped = cap_outliers(df_capped, 'Purchase_Amount')
+
+print("\nDataFrame with Outliers Capped:")
+print(df_capped.head())
+
+# 5. Feature Engineering
+# Create Age_Group column
+def categorize_age(age):
+    if 18 <= age <= 30:
+        return 'Young'
+    elif 31 <= age <= 50:
+        return 'Middle-Aged'
+    elif age >= 51:
+        return 'Senior'
+    else:
+        return np.nan
+
+df['Age_Group'] = df['Age'].apply(categorize_age)
+
+# Visualization of Age_Group distribution
+plt.figure(figsize=(10, 6))
+sns.countplot(data=df, x='Age_Group')
+plt.title('Distribution of Customers by Age Group')
+plt.show()
+
+# 6. Data Transformation
+# Normalize Purchase_Amount using Min-Max Scaling and Standardization
+scaler_minmax = MinMaxScaler()
+scaler_standard = StandardScaler()
+
+df['Purchase_Amount_MinMax'] = scaler_minmax.fit_transform(df[['Purchase_Amount']])
+df['Purchase_Amount_Standard'] = scaler_standard.fit_transform(df[['Purchase_Amount']])
+
+# Plot histograms before and after transformation
+plt.figure(figsize=(14, 6))
+
+plt.subplot(1, 3, 1)
+sns.histplot(df['Purchase_Amount'], bins=20, kde=True)
+plt.title('Original Purchase Amount')
+
+plt.subplot(1, 3, 2)
+sns.histplot(df['Purchase_Amount_MinMax'], bins=20, kde=True)
+plt.title('Min-Max Scaled Purchase Amount')
+
+plt.subplot(1, 3, 3)
+sns.histplot(df['Purchase_Amount_Standard'], bins=20, kde=True)
+plt.title('Standardized Purchase Amount')
+
+plt.tight_layout()
+plt.show()
+
+# 7. Encoding Categorical Variables
+# One-Hot Encoding
+df_onehot = pd.get_dummies(df, columns=['City', 'Gender', 'Marital_Status', 'Education'])
+
+# Label Encoding
+label_encoder = LabelEncoder()
+df_label_encoded = df.copy()
+for column in ['City', 'Gender', 'Marital_Status', 'Education']:
+    df_label_encoded[column] = label_encoder.fit_transform(df_label_encoded[column].astype(str))
+
+# Target Encoding (using mean of Purchase_Amount)
+df_target_encoded = df.copy()
+for column in ['City', 'Gender', 'Marital_Status', 'Education']:
+    target_mean = df.groupby(column)['Purchase_Amount'].mean()
+    df_target_encoded[column] = df[column].map(target_mean)
+
+print("\nOne-Hot Encoded DataFrame:")
+print(df_onehot.head())
+
+print("\nLabel Encoded DataFrame:")
+print(df_label_encoded.head())
+
+print("\nTarget Encoded DataFrame:")
+print(df_target_encoded.head())
+
+# 8. Data Integrity Check
+# Detect and correct inconsistencies in Marital_Status and Education columns
+def correct_inconsistencies(df, column, valid_values):
+    df[column] = df[column].apply(lambda x: x if x in valid_values else np.nan)
+    return df
+
+valid_marital_status = ['Single', 'Married', 'Divorced', 'Widowed']
+valid_education = ['High School', 'Bachelor', 'Master', 'PhD']
+
+df_integrity_checked = df.copy()
+df_integrity_checked = correct_inconsistencies(df_integrity_checked, 'Marital_Status', valid_marital_status)
+df_integrity_checked = correct_inconsistencies(df_integrity_checked, 'Education', valid_education)
+
+print("\nDataFrame after Data Integrity Check:")
+print(df_integrity_checked.head())

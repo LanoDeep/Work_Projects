@@ -1,0 +1,106 @@
+,Customer_ID,Age,Salary,City,Gender,Purchase_Amount,Signup_Date,Marital_Status,Education
+0,1,40.0,70000.0,New York,nan,619,2022-01-01,Widowed,PhD
+1,2,45.0,30000.0,Houston,Female,1945,2022-01-02,Single,PhD
+2,3,35.0,30000.0,New York,Male,2783,2022-01-03,nan,Master
+3,4,45.0,30000.0,nan,Other,3913,2022-01-04,Married,Bachelor
+4,5,45.0,30000.0,New York,Male,4771,2022-01-05,Married,nan
+5,6,30.0,1000000.0,Los Angeles,Male,4064,2022-01-06,nan,nan
+6,7,35.0,50000.0,Houston,Female,2951,2022-01-07,Widowed,Master
+7,8,35.0,50000.0,Houston,nan,1736,2022-01-08,Married,PhD
+8,9,35.0,30000.0,nan,Female,3059,2022-01-09,Widowed,High School
+9,10,45.0,50000.0,Los Angeles,Female,204,2022-01-10,Married,PhD
+10,11,40.0,50000.0,New-York,Female,2587,2022-01-11,Married,Master
+11,12,35.0,30000.0,New York,Female,1459,2022-01-12,Divorced,nan
+12,13,,50000.0,Phoenix,Other,4107,2022-01-13,Married,PhD
+13,14,45.0,70000.0,New York,nan,834,2022-01-14,Single,nan
+14,15,30.0,40000.0,New York,Male,3225,2022-01-15,nan,High School
+15,16,40.0,-5000.0,Chicago,Male,4391,2022-01-16,nan,nan
+16,17,,30000.0,New York,nan,2856,2022-01-17,Widowed,nan
+17,18,,60000.0,Los Angeles,Male,587,2022-01-18,Married,Bachelor
+18,19,30.0,30000.0,Los Angeles,nan,1891,2022-01-19,Single,Bachelor
+19,20,40.0,60000.0,Houston,Male,2505,2022-01-20,Widowed,Bachelor
+20,21,45.0,40000.0,nan,male,574,2022-01-21,Divorced,nan
+21,22,25.0,30000.0,Phoenix,Male,3000,2022-01-22,Widowed,Master
+22,23,40.0,,New York,nan,4181,2022-01-23,Widowed,nan
+23,24,30.0,70000.0,New York,nan,4830,2022-01-24,Married,Master
+24,25,,50000.0,Chicago,nan,4165,2022-01-25,Divorced,Master
+25,26,45.0,60000.0,nan,nan,2418,2022-01-26,Widowed,Bachelor
+26,27,40.0,,Los Angeles,nan,3897,2022-01-27,Single,PhD
+27,28,25.0,50000.0,Phoenix,Other,4545,2022-01-28,Single,High School
+28,29,25.0,50000.0,Houston,Other,2751,2022-01-29,nan,Bachelor
+29,30,35.0,30000.0,Los Angeles,Male,1021,2022-01-30,Divorced,Bachelor
+30,31,35.0,50000.0,nan,nan,1216,2022-01-31,Divorced,bachelor
+31,32,30.0,70000.0,Houston,Male,4979,2022-02-01,nan,High School
+32,33,40.0,,Chicago,nan,2824,2022-02-02,Widowed,nan
+33,34,40.0,50000.0,Chicago,nan,2032,2022-02-03,Divorced,nan
+34,35,,30000.0,New York,Other,903,2022-02-04,Single,Bachelor
+35,36,,70000.0,nan,Other,4196,2022-02-05,Single,High School
+36,37,,40000.0,Phoenix,Female,3786,2022-02-06,Married,Bachelor
+37,38,35.0,,Houston,Other,3819,2022-02-07,Divorced,Master
+38,39,40.0,50000.0,Los Angeles,Female,624,2022-02-08,Widowed,Bachelor
+39,40,40.0,30000.0,nan,Female,3311,2022-02-09,nan,Bachelor
+40,41,25.0,40000.0,nan,Female,1198,2022-02-10,nan,nan
+41,42,35.0,40000.0,Chicago,Female,1765,2022-02-11,Widowed,nan
+42,43,45.0,60000.0,New York,Female,4827,2022-02-12,Married,nan
+43,44,35.0,70000.0,New York,Male,4983,2022-02-13,nan,Master
+44,45,45.0,50000.0,Houston,Other,3904,2022-02-14,Divorced,nan
+45,46,25.0,30000.0,Chicago,Female,2541,2022-02-15,Married,High School
+46,47,30.0,60000.0,nan,nan,2710,2022-02-16,Divorced,PhD
+47,48,40.0,70000.0,Phoenix,Other,3174,2022-02-17,Single,High School
+48,49,25.0,60000.0,Chicago,Other,3101,2022-02-18,Married,High School
+49,50,40.0,,Houston,Female,54,2022-02-19,nan,nan
+50,51,,70000.0,Houston,Male,4919,2022-02-20,Married,PhD
+51,52,30.0,70000.0,Chicago,Female,926,2022-02-21,Married,PhD
+52,53,30.0,50000.0,Houston,Male,1041,2022-02-22,Married,PhD
+53,54,25.0,70000.0,Chicago,nan,4192,2022-02-23,Married,Master
+54,55,30.0,60000.0,Los Angeles,Other,4414,2022-02-24,Divorced,nan
+55,56,45.0,70000.0,Chicago,nan,4515,2022-02-25,Single,PhD
+56,57,30.0,50000.0,Chicago,Male,685,2022-02-26,Widowed,Master
+57,58,40.0,50000.0,Houston,Male,1743,2022-02-27,Married,Bachelor
+58,59,40.0,,Houston,nan,1732,2022-02-28,nan,Bachelor
+59,60,40.0,60000.0,New York,Male,4802,2022-03-01,Married,Master
+60,61,40.0,40000.0,New York,nan,169,2022-03-02,nan,Master
+61,62,45.0,40000.0,Los Angeles,Other,880,2022-03-03,Divorced,nan
+62,63,35.0,70000.0,New York,nan,3725,2022-03-04,nan,nan
+63,64,,,Chicago,Other,1419,2022-03-05,Widowed,Bachelor
+64,65,25.0,30000.0,Houston,nan,790,2022-03-06,Single,PhD
+65,66,40.0,70000.0,New York,Male,166,2022-03-07,nan,Bachelor
+66,67,30.0,,New York,nan,2888,2022-03-08,nan,PhD
+67,68,40.0,60000.0,Los Angeles,Male,1200,2022-03-09,Single,PhD
+68,69,30.0,60000.0,nan,nan,1981,2022-03-10,Widowed,nan
+69,70,,60000.0,Los Angeles,nan,1062,2022-03-11,Married,High School
+70,71,,60000.0,Chicago,Female,1714,2022-03-12,nan,High School
+71,72,,60000.0,Houston,Male,1131,2022-03-13,Single,Master
+72,73,30.0,,Los Angeles,Female,4779,2022-03-14,Divorced,nan
+73,74,40.0,,New York,Male,562,2022-03-15,Single,PhD
+74,75,,50000.0,Houston,Female,2899,2022-03-16,Divorced,High School
+75,76,45.0,40000.0,Houston,Other,609,2022-03-17,Widowed,PhD
+76,77,30.0,60000.0,New York,nan,3722,2022-03-18,Married,High School
+77,78,30.0,30000.0,Los Angeles,Male,4633,2022-03-19,Single,High School
+78,79,40.0,,New York,Male,3393,2022-03-20,nan,High School
+79,80,30.0,30000.0,nan,nan,4120,2022-03-21,Widowed,nan
+80,81,30.0,30000.0,Houston,Male,4849,2022-03-22,Single,Bachelor
+81,82,,30000.0,Phoenix,Male,1520,2022-03-23,nan,PhD
+82,83,40.0,50000.0,Phoenix,Female,630,2022-03-24,Single,nan
+83,84,,,Chicago,Male,2344,2022-03-25,Divorced,nan
+84,85,,30000.0,New York,Other,3197,2022-03-26,Single,nan
+85,86,40.0,60000.0,New York,Other,4299,2022-03-27,Single,nan
+86,87,25.0,70000.0,Chicago,nan,1729,2022-03-28,Single,nan
+87,88,,30000.0,Chicago,Male,3556,2022-03-29,Widowed,Master
+88,89,45.0,50000.0,Chicago,nan,2794,2022-03-30,Single,PhD
+89,90,45.0,,Houston,Other,3406,2022-03-31,nan,nan
+90,91,30.0,50000.0,nan,Male,4095,2022-04-01,Divorced,PhD
+91,92,45.0,30000.0,New York,Male,1293,2022-04-02,Divorced,Master
+92,93,30.0,,Houston,nan,3168,2022-04-03,Single,Master
+93,94,25.0,70000.0,Chicago,Other,2191,2022-04-04,Widowed,PhD
+94,95,40.0,30000.0,New York,Male,3109,2022-04-05,Widowed,High School
+95,96,40.0,50000.0,Houston,nan,4598,2022-04-06,nan,Bachelor
+96,97,40.0,40000.0,nan,Other,3009,2022-04-07,Single,High School
+97,98,45.0,60000.0,Houston,nan,2315,2022-04-08,Divorced,High School
+98,99,25.0,50000.0,nan,Female,2529,2022-04-09,Widowed,High School
+99,100,45.0,,Chicago,Male,4696,2022-04-10,Single,nan
+0,1,40.0,70000.0,New York,nan,619,2022-01-01,Widowed,PhD
+1,2,45.0,30000.0,Houston,Female,1945,2022-01-02,Single,PhD
+2,3,35.0,30000.0,New York,Male,2783,2022-01-03,nan,Master
+3,4,45.0,30000.0,nan,Other,3913,2022-01-04,Married,Bachelor
+4,5,45.0,30000.0,New York,Male,4771,2022-01-05,Married,nan
